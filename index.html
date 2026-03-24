@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Arraihan Attamimi | Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- FX CANVAS -->
+  <canvas id="fx-canvas"></canvas>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="pre-bg"></div>
+    <div class="pre-grid"></div>
+    <div class="pre-orb pre-orb1"></div>
+    <div class="pre-orb pre-orb2"></div>
+    <div class="pre-ring">
+      <img src="img/profil/profil.webp" alt="Arraihan">
+    </div>
+    <div class="pre-name">ARRAIHAN</div>
+    <div class="pre-sub">Portfolio</div>
+    <div class="pre-status" id="pre-status">Initializing<span class="pre-cursor">|</span></div>
+    <div class="pre-bar-wrap">
+      <div class="pre-bar-fill" id="pre-bar"></div>
+    </div>
+  </div>
+
+  <!-- DRAWER OVERLAY -->
+  <div id="drawer-overlay"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-ring"><img src="img/profil/profil.webp" alt="Arraihan"></div>
+      <span class="nav-name">Arraihan</span>
+    </div>
+    <div class="nav-links" id="nav-links-desk">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#education" class="nav-link">Pendidikan</a>
+      <a href="#projects" class="nav-link">Display</a>
+      <a href="#contact" class="nav-link">Jasa</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon-btn music-btn" id="music-toggle-desk" title="Play/Pause Music" aria-label="Toggle music"
+        style="display:none;">🎵</button>
+      <button class="theme-toggle" id="theme-toggle-desk" title="Toggle Dark/Light" aria-label="Toggle theme"></button>
+      <button id="ham-btn" class="ham-btn" aria-label="Menu">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div style="height:68px"></div>
+
+  <!-- SIDE DRAWER MOBILE MENU -->
+  <div id="mobile-menu">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#education" class="nav-link">Pendidikan</a>
+    <a href="#projects" class="nav-link">Display</a>
+    <a href="#contact" class="nav-link">Jasa</a>
+    <div id="drawer-bottom">
+      <button class="nav-icon-btn music-btn" id="music-toggle-mob" style="display:none; margin-right: auto;">🎵</button>
+      <span class="theme-icon" id="drawer-theme-icon">🌙</span>
+      <button class="theme-toggle" id="theme-toggle-mob" aria-label="Toggle theme"></button>
+      <span id="drawer-theme-label">Dark Mode</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-mesh"></div>
+    <div class="hero-grid-lines"></div>
+    <canvas id="snake-canvas"></canvas>
+
+    <div class="hero-inner">
+      <div class="avatar-wrap reveal-up">
+        <div class="avatar-ring">
+          <img src="img/profil/profil.webp" alt="Arraihan Attamimi">
+        </div>
+        <div class="avatar-status">
+          <span class="status-dot"></span>Available
+        </div>
+      </div>
+
+      <h1 class="hero-name reveal-up" style="animation-delay:.1s">Arraihan Attamimi</h1>
+      <p class="hero-tagline reveal-up" style="animation-delay:.2s">pengangguran namun sibuk</p>
+
+      <div class="social-row reveal-up" style="animation-delay:.35s">
+        <a href="https://www.facebook.com/arraihan.attamimi?mibextid=ZbWKwL" target="_blank" class="social-btn"
+          title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+          <span>Facebook</span>
+        </a>
+        <a href="https://wa.me/6289636134570" target="_blank" class="social-btn social-btn--wa" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.52 3.48A11.946 11.946 0 0012 0C5.373 0 0 5.373 0 12c0 2.109.554 4.082 1.516 5.844L0 24l6.408-1.513A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12 0-3.195-1.25-6.186-3.48-8.52zm-2.27 13.49c-.193.54-1.129 1.027-1.588 1.086-.425.053-.956.074-2.414-.68-3.284-1.454-5.406-5.107-5.556-5.354-.15-.248-1.268-1.842-1.268-3.515 0-1.673.879-2.494 1.19-2.833.31-.339.677-.423.902-.423.226 0 .447.003.642.007.21.005.492-.08.77.588.277.668.944 2.315 1.028 2.488.083.174.138.38.003.614-.135.233-.203.38-.405.59-.202.21-.426.468-.608.63-.202.181-.417.381-.298.646.119.264.527 1.072 1.13 1.736.78.842 1.446 1.126 1.667 1.255.22.129.347.108.475-.065.128-.174.548-.64.693-.857.145-.218.294-.18.507-.107.212.073 1.336.63 1.562.743.226.114.377.17.433.266.057.096.057.554-.136 1.093z" />
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/r.raihan_12?igsh=M3NtejFsaHNmYjBq" target="_blank"
+          class="social-btn social-btn--ig" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+          </svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@r.raihan_12?_r=1&_t=ZS-94vZ2ZulJXY" target="_blank"
+          class="social-btn social-btn--tt" title="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.41a8.19 8.19 0 0 0 4.77 1.52V7.49a4.85 4.85 0 0 1-1-.8z" />
+          </svg>
+          <span>TikTok</span>
+        </a>
+        <a href="https://x.com/rraihan_12" target="_blank" class="social-btn social-btn--x" title="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          <span>X</span>
+        </a>
+      </div>
+
+      <div class="scroll-hint reveal-up" style="animation-delay:.5s">
+        <span>scroll</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 12L2 6h12z" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     ABOUT ME
+══════════════════════════════════════════ -->
+  <section id="about" class="section-wrap">
+    <div class="reveal">
+      <div class="section-label">/ 01 — WHO AM I</div>
+      <h2 class="section-title">About Me</h2>
+    </div>
+
+    <div class="about-layout">
+      <!-- Left: Photo card -->
+      <div class="about-photo-col reveal-left">
+        <div class="about-photo-card">
+          <div class="photo-frame">
+            <img src="img/profil/profil.webp" alt="Arraihan Attamimi" class="about-photo">
+            <div class="photo-gradient"></div>
+          </div>
+          <div class="photo-info-bar">
+            <div class="pib-name">Arraihan Attamimi</div>
+            <div class="pib-role">Creator & Communicator</div>
+            <div class="pib-tags">
+              <span class="tag-chip">🎤 Speaker</span>
+              <span class="tag-chip">🎨 Designer</span>
+              <span class="tag-chip">📱 Content</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Text -->
+      <div class="about-text-col reveal-right">
+        <div class="about-eyebrow">About Me – Arraihan Elshanty Attamimi</div>
+        <h3 class="about-headline">Kalau kamu baca ini…<br><span class="hl-gradient">fix kamu kepo :)</span></h3>
+        <div class="about-body">
+          <p>Yaudah, kenalan dulu aja.</p>
+          <p>Aku <strong>Arraihan Elshanty Attamimi</strong>. Bukan superhero, tapi lumayan sering "menyelamatkan" ide
+            biar nggak tenggelam.</p>
+          <p>Fokusku sederhana: <strong>membuat pesan jadi jelas, menarik, dan berdampak.</strong></p>
+
+          <div class="focus-grid">
+            <div class="focus-item">
+              <span class="focus-icon">🎤</span>
+              <div>
+                <div class="focus-title">Public Speaking & Dakwah</div>
+              </div>
+            </div>
+            <div class="focus-item">
+              <span class="focus-icon">🎨</span>
+              <div>
+                <div class="focus-title">Visual Design</div>
+              </div>
+            </div>
+            <div class="focus-item">
+              <span class="focus-icon">📱</span>
+              <div>
+                <div class="focus-title">Digital Content & Media</div>
+              </div>
+            </div>
+          </div>
+
+          <p>Selebihnya, aku belajar dari proses. Nggak selalu benar, tapi selalu berkembang.</p>
+          <p>Di waktu yang sama, aku juga mengembangkan sebuah platform bernama <strong class="hl-gradient">MEDIA
+              CREATIVE SANTRI</strong> — ruang terpisah, tempat ide-ide kreatif dikembangkan lebih luas.</p>
+          <p>Kadang terlihat santai, kadang juga banyak mikir. Karena Aku <strong>PNS</strong> <em>(Pengangguran Namun
+              Sibuk?)</em></p>
+
+          <div class="about-closing-card">
+            <p>Kalau kamu sampai di halaman ini,<br>mungkin bukan kebetulan…</p>
+            <p class="hl-gradient" style="font-weight:600">Siapa tahu, kita lagi ada di cerita yang sama.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════ -->
+  <section id="skills" class="section-wrap">
+    <div class="reveal">
+      <div class="section-label">/ 02 — EXPERTISE</div>
+      <h2 class="section-title">Skills</h2>
+      <p class="section-desc">Klik skill untuk melihat hasil karya</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal d1" data-skill="video">
+        <div class="skill-glow"></div>
+        <div class="skill-icon-wrap">
+          <div class="skill-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M15 10l4.553-2.277A1 1 0 0121 8.683V15.317a1 1 0 01-1.447.894L15 14M4 8a2 2 0 012-2h9a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" />
+            </svg>
+          </div>
+        </div>
+        <div class="skill-info">
+          <div class="skill-name">Editing Video</div>
+          <div class="skill-desc">Produksi & editing video kreatif, dari footage hingga final cut siap publikasi</div>
+          <div class="skill-cta">Lihat karya <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M6 3l5 5-5 5" />
+            </svg></div>
+        </div>
+        <div class="skill-badge">Click Me</div>
+      </div>
+
+      <div class="skill-card reveal d2" data-skill="design">
+        <div class="skill-glow"></div>
+        <div class="skill-icon-wrap">
+          <div class="skill-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 19l7-7 3 3-7 7-3-3z" />
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+              <path d="M2 2l7.586 7.586" />
+              <circle cx="11" cy="11" r="2" />
+            </svg>
+          </div>
+        </div>
+        <div class="skill-info">
+          <div class="skill-name">Desain Grafis</div>
+          <div class="skill-desc">Visual design, poster, branding, dan konten kreatif untuk berbagai media</div>
+          <div class="skill-cta">Lihat karya <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M6 3l5 5-5 5" />
+            </svg></div>
+        </div>
+        <div class="skill-badge">Click Me</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILL GALLERY MODAL -->
+  <div id="skill-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <button id="close-skill-modal" class="modal-close">&times;</button>
+      <h3 id="skill-modal-title" class="modal-title"></h3>
+      <div id="skill-gallery-grid" class="gallery-grid"></div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+     EXPERIENCE & PRESTASI
+══════════════════════════════════════════ -->
+  <section id="experience" class="section-wrap">
+    <div class="reveal">
+      <div class="section-label">/ 03 — TRACK RECORD</div>
+      <h2 class="section-title">Pengalaman & Prestasi</h2>
+    </div>
+
+    <!-- Tabs -->
+    <div class="exp-tabs reveal">
+      <button class="exp-tab active" data-tab="org-utama">🏛️ Organisasi Utama</button>
+      <button class="exp-tab" data-tab="prestasi">🏆 Prestasi</button>
+      <button class="exp-tab" data-tab="org-lain">🤝 Pengalaman Lain</button>
+    </div>
+
+    <!-- Tab: Organisasi Utama -->
+    <div class="exp-panel active" id="tab-org-utama">
+      <div class="org-grid" id="org-utama-grid"></div>
+    </div>
+
+    <!-- Tab: Prestasi -->
+    <div class="exp-panel hidden" id="tab-prestasi">
+      <div class="prestasi-list" id="prestasi-list"></div>
+    </div>
+
+    <!-- Tab: Organisasi Lain -->
+    <div class="exp-panel hidden" id="tab-org-lain">
+      <div class="org-grid" id="org-lain-grid"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     PENDIDIKAN
+══════════════════════════════════════════ -->
+  <section id="education" class="section-wrap">
+    <div class="reveal">
+      <div class="section-label">/ 04 — ACADEMIC JOURNEY</div>
+      <h2 class="section-title">Pendidikan</h2>
+    </div>
+    <div class="edu-timeline" id="edu-timeline"></div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     DISPLAY / PAMERAN
+══════════════════════════════════════════ -->
+  <section id="projects" class="section-wrap">
+    <div class="reveal">
+      <div class="section-label">/ 05 — SHOWCASE</div>
+      <h2 class="section-title">Display</h2>
+      <p class="section-desc">Cerita dan karya yang ingin aku bagikan</p>
+    </div>
+    <div id="pameran-grid" class="pameran-grid"></div>
+  </section>
+
+  <!-- PAMERAN DETAIL -->
+  <section id="pameran-page" class="hidden section-wrap">
+    <div
+      style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:28px;flex-wrap:wrap">
+      <h1 id="pameran-title" class="pameran-detail-title"></h1>
+      <button onclick="backToHome()" class="back-btn">← Kembali</button>
+    </div>
+    <div class="media-wrap" style="margin-bottom:20px"></div>
+    <div id="pameran-meta" class="pameran-meta"></div>
+    <article id="pameran-content" class="pameran-content"></article>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     CONTACT / JASA
+══════════════════════════════════════════ -->
+  <section id="contact" class="section-wrap contact-section">
+    <div class="reveal">
+      <div class="section-label">/ 06 — LET'S WORK</div>
+      <h2 class="section-title">Butuh Jasa?</h2>
+      <p class="section-desc">Edit video dan desain grafis — siap membantu!</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">🎬</div>
+        <div class="service-name">Edit Video</div>
+        <div class="service-desc">Editing profesional untuk konten medsos, dokumentasi, promo, dan lainnya</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Desain Grafis</div>
+        <div class="service-desc">Poster, banner, konten feed, flyer, dan berbagai kebutuhan visual</div>
+      </div>
+    </div>
+
+    <div class="contact-cta reveal">
+      <p class="cta-text">Tertarik? Langsung hubungi aku lewat WhatsApp!</p>
+      <a href="https://wa.me/6289636134570" target="_blank" class="cta-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.52 3.48A11.946 11.946 0 0012 0C5.373 0 0 5.373 0 12c0 2.109.554 4.082 1.516 5.844L0 24l6.408-1.513A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12 0-3.195-1.25-6.186-3.48-8.52z" />
+        </svg>
+        Chat via WhatsApp
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+  <footer>
+    <p>&copy; 2025 <span class="hl-gradient">Arraihan Elshanty Attamimi</span>. Dibuat dengan semangat & kreativitas.
+    </p>
+    <p style="margin-top:6px;font-size:0.65rem;opacity:.5">PNS — Pengangguran Namun Sibuk ✨</p>
+  </footer>
+
+
+  <!-- IMAGE MODAL -->
+  <div id="image-modal">
+    <img id="modal-img" alt="">
+  </div>
+
+  <!-- MUSIC POPUP -->
+  <div id="music-popup" class="modal-overlay hidden" style="z-index: 99999;">
+    <div class="modal-box" style="max-width: 400px; text-align: center; padding: 40px 20px;">
+      <div style="font-size: 3rem; margin-bottom: 20px;">🎵</div>
+      <h3 class="modal-title" style="margin-bottom: 10px;">Ingin memutar musik?</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px;">Nikmati pengalaman melihat portfolio
+        dengan musik latar.</p>
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button id="music-btn-no"
+          style="padding: 10px 24px; border-radius: 8px; border: 1px solid var(--card-border); background: transparent; color: var(--text); cursor: pointer; transition: 0.2s;">Nanti</button>
+        <button id="music-btn-yes"
+          style="padding: 10px 24px; border-radius: 8px; border: none; background: var(--gradient); color: white; cursor: pointer; font-weight: bold; transition: 0.2s;">Boleh!</button>
+      </div>
+      <p
+        style="color: var(--text-muted); font-size: 0.65rem; margin-top: 20px; opacity: 0.6; font-family: var(--font-m);">
+        Credit music: Humood AlKhudher - Kun Anta</p>
+    </div>
+  </div>
+
+  <!-- AUDIO ELEMENT -->
+  <audio id="bg-music" src="audio/music.mp3" loop></audio>
+
+  <!-- SCRIPTS -->
+  <script src="js/config.js"></script>
+  <script src="js/data-pameran.js"></script>
+  <script src="js/spa-pameran.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
