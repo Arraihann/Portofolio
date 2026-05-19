@@ -14,7 +14,9 @@ setTimeout(hidePreloader, 4500);
 let _dark = localStorage.getItem('theme') !== 'light';
 function applyTheme(d) {
   _dark = d;
-  document.body.classList.toggle('light', !d);
+  document.body.classList.toggle('light-mode', !d);
+  document.documentElement.classList.toggle('dark', d);
+  document.documentElement.classList.toggle('light', !d);
   const ic = document.getElementById('drawer-theme-icon'), lb = document.getElementById('drawer-theme-label');
   if (ic) ic.textContent = d ? '🌙' : '☀️'; if (lb) lb.textContent = d ? 'Dark Mode' : 'Light Mode';
   localStorage.setItem('theme', d ? 'dark' : 'light');
